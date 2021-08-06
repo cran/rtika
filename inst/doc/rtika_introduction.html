@@ -12,49 +12,94 @@
 
 <meta name="author" content="Sasha Goodman" />
 
-<meta name="date" content="2020-04-24" />
+<meta name="date" content="2021-08-06" />
 
 <title>Introduction to rtika</title>
 
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 
 </style>
 <script>
@@ -81,7 +126,30 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 
 
-<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
 
 
 
@@ -95,7 +163,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Introduction to rtika</h1>
 <h4 class="author">Sasha Goodman</h4>
-<h4 class="date">2020-04-24</h4>
+<h4 class="date">2021-08-06</h4>
 
 
 
@@ -103,8 +171,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>A Digital Babel Fish</h1>
 <pre><code>                    .----.      
            ____    __\\\\\\__                 
-           \___'--&quot;          .-.          
-           /___&gt;------rtika  '0'          
+           \___&#39;--&quot;          .-.          
+           /___&gt;------rtika  &#39;0&#39;          
           /____,--.        \----B      
                   &quot;&quot;.____  ___-&quot;    
                   //    / /                   
@@ -118,75 +186,75 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1>Extract Plain Text</h1>
 <p>Video, sound and images are important, and yet much meaningful data remains numeric or textual. Tika can parse many formats and extract alpha-numeric characters, along with a few characters to control the arrangement of text, like line breaks.</p>
 <p>I recommend an analyst start with a directory on the computer and get a vector of paths to each file using <code>base::list.files()</code>. The commented code below has a recipe. Here, I use test files that are included with the package.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-<span class="kw">library</span>(<span class="st">'rtika'</span>)
-<span class="kw">library</span>(<span class="st">'magrittr'</span>)
-
-<span class="co"># Code to get ALL the files in my_path:</span>
-
-<span class="co"># my_path &lt;- &quot;~&quot;</span>
-<span class="co"># batch &lt;- file.path(my_path,</span>
-<span class="co">#                 list.files(path = my_path,</span>
-<span class="co">#                 recursive = TRUE))</span>
-
-<span class="co"># pipe the batch into tika_text() </span>
-<span class="co"># to get plain text</span>
-
-<span class="co"># test files</span>
-batch &lt;-<span class="st"> </span><span class="kw">c</span>(
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;jsonlite.pdf&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;curl.pdf&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;table.docx&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;xml2.pdf&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;R-FAQ.html&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;calculator.jpg&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>),
-  <span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;tika.apache.org.zip&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>)
-)
-
-text &lt;-<span class="st">  </span>
-<span class="st">    </span>batch <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">tika_text</span>() 
-
-<span class="co"># normal syntax also works:</span>
-<span class="co"># text &lt;- tika_text(batch)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;rtika&#39;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;magrittr&#39;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Code to get ALL the files in my_path:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># my_path &lt;- &quot;~&quot;</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># batch &lt;- file.path(my_path,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                 list.files(path = my_path,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                 recursive = TRUE))</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe the batch into tika_text() </span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># to get plain text</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># test files</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;jsonlite.pdf&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;curl.pdf&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;table.docx&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;xml2.pdf&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;R-FAQ.html&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;calculator.jpg&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>),</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;tika.apache.org.zip&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>)</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span>  </span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    batch <span class="sc">%&gt;%</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tika_text</span>() </span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># normal syntax also works:</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># text &lt;- tika_text(batch)</span></span></code></pre></div>
 <p>The output is a R character vector of the same length and order as the input files.</p>
 <p>In the example above, there are several seconds of overhead to start up the Tika batch processor and then process the output. The most costly file was the first one. Large batches are parsed more quickly. For example, when parsing thousands of 1-5 page Word documents, I’ve measured 1/100th of a second per document on average.</p>
 <p>Occasionally, files are not parsable and the returned value for the file will be <code>NA</code>. The reasons include corrupt files, disk input/output issues, empty files, password protection, a unhandled format, the document structure is broken, or the document has an unexpected variation.</p>
 <p>These issues should be rare. Tika works well on most documents, but if an archive is very large there may be a small percentage of unparsable files, and you might want to handle those.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Find which files had an issue</span>
-<span class="co"># Handle them if needed</span>
-batch[<span class="kw">which</span>(<span class="kw">is.na</span>(text))]
-<span class="co">#&gt; character(0)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find which files had an issue</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Handle them if needed</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>batch[<span class="fu">which</span>(<span class="fu">is.na</span>(text))]</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; character(0)</span></span></code></pre></div>
 <p>Plain text is easy to search using <code>base::grep()</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">length</span>(text)
-<span class="co">#&gt; [1] 7</span>
-
-search &lt;-
-<span class="st">    </span>text[<span class="kw">grep</span>(<span class="dt">pattern =</span> <span class="st">' is '</span>, <span class="dt">x =</span> text)]
-
-<span class="kw">length</span>(search)
-<span class="co">#&gt; [1] 6</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(text)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 7</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>search <span class="ot">&lt;-</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    text[<span class="fu">grep</span>(<span class="at">pattern =</span> <span class="st">&#39; is &#39;</span>, <span class="at">x =</span> text)]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(search)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 6</span></span></code></pre></div>
 <p>With plain text, a variety of interesting analyses are possible, ranging from word counting to constructing matrices for deep learning. Much of this text processing is handled easily with the well documented <code>tidytext</code> package <span class="citation">(Silge and Robinson 2017)</span>. Among other things, it handles tokenization and creating term-document matrices.</p>
 </div>
 <div id="preserve-content-type-when-downloading" class="section level1">
 <h1>Preserve Content-Type when Downloading</h1>
 <p>A general suggestion is to use <code>tika_fetch()</code> when downloading files from the Internet, to preserve the server Content-Type information in a file extension.</p>
 <p>Tika’s Content-Type detection is improved with file extensions (Tika also relies on other features such as Magic bytes, which are unique control bytes in the file header). The <code>tika_fetch()</code> function tries to preserves Content-Type information from the download server by finding the matching extension in Tika’s database.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">download_directory &lt;-<span class="st"> </span><span class="kw">tempfile</span>(<span class="st">'rtika_'</span>)
-
-<span class="kw">dir.create</span>(download_directory)
-
-urls &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'https://tika.apache.org/'</span>,
-          <span class="st">'https://cran.rstudio.com/web/packages/keras/keras.pdf'</span>)
-
-downloaded &lt;-<span class="st"> </span>
-<span class="st">    </span>urls <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">tika_fetch</span>(download_directory)
-
-<span class="co"># it will add the appropriate file extension to the downloads</span>
-downloaded
-<span class="co">#&gt; [1] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a61229c3102/rtika_filea6125c557ba4.html&quot;</span>
-<span class="co">#&gt; [2] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a61229c3102/rtika_filea61270287b57.pdf&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>download_directory <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="st">&#39;rtika_&#39;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(download_directory)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>urls <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;https://tika.apache.org/&#39;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>          <span class="st">&#39;https://cran.rstudio.com/web/packages/keras/keras.pdf&#39;</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>downloaded <span class="ot">&lt;-</span> </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    urls <span class="sc">%&gt;%</span> </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tika_fetch</span>(download_directory)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># it will add the appropriate file extension to the downloads</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>downloaded</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a2718112d1c/rtika_file9a27fa8959c.html&quot;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a2718112d1c/rtika_file9a274f63ccc.pdf&quot;</span></span></code></pre></div>
 <p>This <code>tika_fetch()</code> function is used internally by the <code>tika()</code> functions when processing URLs. By using <code>tika_fetch()</code> explicitly with a specified directory, you can also save the files and return to them later.</p>
 </div>
 <div id="settings-for-big-datasets" class="section level1">
@@ -194,63 +262,63 @@ downloaded
 <p>Large jobs are possible with <code>rtika</code>. However, with hundreds of thousands of documents, the R object returned by the <code>tika()</code> functions can be too big for RAM. In such cases, it is good to use the computer’s disk more, since running out of RAM slows the computer.</p>
 <p>I suggest changing two parameters in any of the <code>tika()</code> parsers. First, set <code>return = FALSE</code> to prevent returning a big R character vector of text. Second, specify an existing directory on the file system using <code>output_dir</code>, pointing to where the processed files will be saved. The files can be dealt with in smaller batches later on.</p>
 <p>Another option is to increase the number of threads, setting <code>threads</code> to something like the number of processors minus one.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># create a directory not already in use.</span>
-my_directory &lt;-
-<span class="st">   </span><span class="kw">tempfile</span>(<span class="st">'rtika_'</span>)
-                  
-<span class="kw">dir.create</span>(my_directory)
-
-<span class="co"># pipe the batch to tika_text()</span>
-batch <span class="op">%&gt;%</span>
-<span class="kw">tika_text</span>(<span class="dt">threads =</span> <span class="dv">4</span>,
-          <span class="dt">return =</span> <span class="ot">FALSE</span>,
-          <span class="dt">output_dir =</span> my_directory) 
-
-<span class="co"># list all the file locations </span>
-processed_files &lt;-<span class="st"> </span><span class="kw">file.path</span>(
-                <span class="kw">normalizePath</span>(my_directory),
-                <span class="kw">list.files</span>(<span class="dt">path =</span> my_directory,
-                <span class="dt">recursive =</span> <span class="ot">TRUE</span>)
-                )</code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create a directory not already in use.</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_directory <span class="ot">&lt;-</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tempfile</span>(<span class="st">&#39;rtika_&#39;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dir.create</span>(my_directory)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># pipe the batch to tika_text()</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>batch <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="fu">tika_text</span>(<span class="at">threads =</span> <span class="dv">4</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">return =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">output_dir =</span> my_directory) </span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># list all the file locations </span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>processed_files <span class="ot">&lt;-</span> <span class="fu">file.path</span>(</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>                <span class="fu">normalizePath</span>(my_directory),</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>                <span class="fu">list.files</span>(<span class="at">path =</span> my_directory,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                )</span></code></pre></div>
 <p>The location of each file in <code>output_dir</code> follows a convention from the Apache Tika batch processor: the full path to each file mirrors the original file’s path, only within the <code>output_dir</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">processed_files
-<span class="co">#&gt; [1] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/R-FAQ.html.txt&quot;         </span>
-<span class="co">#&gt; [2] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/calculator.jpg.txt&quot;     </span>
-<span class="co">#&gt; [3] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/curl.pdf.txt&quot;           </span>
-<span class="co">#&gt; [4] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/jsonlite.pdf.txt&quot;       </span>
-<span class="co">#&gt; [5] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/table.docx.txt&quot;         </span>
-<span class="co">#&gt; [6] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/tika.apache.org.zip.txt&quot;</span>
-<span class="co">#&gt; [7] &quot;/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/RtmpeWao9k/rtika_a6125b8899a5/private/var/folders/nr/74rgb64s3n98yccxwbv6vsxw0000gn/T/Rtmpdsxab3/Rinsta5e44153af72/rtika/extdata/xml2.pdf.txt&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>processed_files</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/R-FAQ.html.txt&quot;         </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/calculator.jpg.txt&quot;     </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/curl.pdf.txt&quot;           </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/jsonlite.pdf.txt&quot;       </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/table.docx.txt&quot;         </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/tika.apache.org.zip.txt&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] &quot;/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/RtmpUIoM9y/rtika_9a278c4899c/private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/xml2.pdf.txt&quot;</span></span></code></pre></div>
 <p>Note that <code>tika_text()</code> produces <code>.txt</code> files, <code>tika_xml()</code> produces <code>.xml</code> files, <code>tika_html()</code> produces <code>.html</code> files, and both <code>tika_json()</code> and <code>tika_json_text()</code> produce <code>.json</code> files.</p>
 </div>
 <div id="get-a-structured-xhtml-rendition" class="section level1">
 <h1>Get a Structured XHTML Rendition</h1>
 <p>Plain text falls short for some purposes. For example, pagination might be important for selecting a particular page in a PDF. The Tika authors chose HTML as a universal format because it offers semantic elements that are common or familiar. For example, the hyperlink is represented in HTML as the anchor element <code>&lt;a&gt;</code> with the attribute <code>href</code>. The HTML in Tika preserves this metadata:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'xml2'</span>)
-
-<span class="co"># get XHTML text</span>
-html &lt;-<span class="st"> </span>
-<span class="st">    </span>batch <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">tika_html</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(xml2<span class="op">::</span>read_html)
-
-<span class="co"># parse links from documents</span>
-links &lt;-
-<span class="st">    </span>html <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(xml2<span class="op">::</span>xml_find_all, <span class="st">'//a'</span>) <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(xml2<span class="op">::</span>xml_attr, <span class="st">'href'</span>)
-
-<span class="kw">sample</span>(links[[<span class="dv">1</span>]],<span class="dv">10</span>)
-<span class="co">#&gt;  [1] &quot;https://github.com/maxogden/dat&quot;                                               </span>
-<span class="co">#&gt;  [2] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span>
-<span class="co">#&gt;  [3] &quot;http://jsonlines.org/&quot;                                                         </span>
-<span class="co">#&gt;  [4] &quot;http://ndjson.org&quot;                                                             </span>
-<span class="co">#&gt;  [5] &quot;http://docs.mongodb.org/manual/reference/program/mongoexport/#cmdoption--query&quot;</span>
-<span class="co">#&gt;  [6] &quot;http://en.wikipedia.org/wiki/Singleton_(mathematics)&quot;                          </span>
-<span class="co">#&gt;  [7] &quot;http://docs.mongodb.org/manual/reference/program/mongoexport/#cmdoption--query&quot;</span>
-<span class="co">#&gt;  [8] &quot;https://www.opencpu.org/posts/jsonlite-a-smarter-json-encoder&quot;                 </span>
-<span class="co">#&gt;  [9] &quot;http://github.com/jeroen/jsonlite/issues&quot;                                      </span>
-<span class="co">#&gt; [10] &quot;https://arxiv.org/abs/1403.2805&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;xml2&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># get XHTML text</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>html <span class="ot">&lt;-</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    batch <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tika_html</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(xml2<span class="sc">::</span>read_html)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># parse links from documents</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>links <span class="ot">&lt;-</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    html <span class="sc">%&gt;%</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_find_all, <span class="st">&#39;//a&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_attr, <span class="st">&#39;href&#39;</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(links[[<span class="dv">1</span>]],<span class="dv">10</span>)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;http://en.wikipedia.org/wiki/Singleton_(mathematics)&quot;                          </span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;http://docs.mongodb.org/manual/reference/program/mongoexport/#cmdoption--query&quot;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;http://en.wikipedia.org/wiki/Singleton_(mathematics)&quot;                          </span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;http://github.com/jeroen/jsonlite/issues&quot;                                      </span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;https://github.com/maxogden/dat&quot;                                               </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;http://ndjson.org&quot;                                                             </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;http://ndjson.org&quot;</span></span></code></pre></div>
 <p>Each type of file has different information preserved by Tika’s internal parsers. The particular aspects vary. Some notes:</p>
 <ul>
 <li>PDF files retain pagination, with each page starting with the XHTML element <code>&lt;div class=&quot;page&quot;&gt;</code>.</li>
@@ -263,205 +331,203 @@ links &lt;-
 <div id="access-metadata-in-the-xhtml" class="section level1">
 <h1>Access Metadata in the XHTML</h1>
 <p>The <code>tika_html()</code> and <code>tika_xml()</code> functions are focused on extracting strict, structured HTML as XHTML. In addition, metadata can be accessed in the <code>meta</code> tags of the XHTML. Common metadata fields include <code>Content-Type</code>, <code>Content-Length</code>, <code>Creation-Date</code>, and <code>Content-Encoding</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Content-Type</span>
-html <span class="op">%&gt;%</span>
-<span class="kw">lapply</span>(xml2<span class="op">::</span>xml_find_first, <span class="st">'//meta[@name=&quot;Content-Type&quot;]'</span>) <span class="op">%&gt;%</span>
-<span class="kw">lapply</span>(xml2<span class="op">::</span>xml_attr, <span class="st">'content'</span>) <span class="op">%&gt;%</span>
-<span class="kw">unlist</span>()
-<span class="co">#&gt; [1] &quot;application/pdf&quot;                                                        </span>
-<span class="co">#&gt; [2] &quot;application/pdf&quot;                                                        </span>
-<span class="co">#&gt; [3] &quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;</span>
-<span class="co">#&gt; [4] &quot;application/pdf&quot;                                                        </span>
-<span class="co">#&gt; [5] &quot;text/html; charset=UTF-8&quot;                                               </span>
-<span class="co">#&gt; [6] &quot;image/jpeg&quot;                                                             </span>
-<span class="co">#&gt; [7] &quot;application/zip&quot;</span>
-
-<span class="co"># Creation-Date</span>
-html <span class="op">%&gt;%</span>
-<span class="kw">lapply</span>(xml2<span class="op">::</span>xml_find_first, <span class="st">'//meta[@name=&quot;Creation-Date&quot;]'</span>) <span class="op">%&gt;%</span>
-<span class="kw">lapply</span>(xml2<span class="op">::</span>xml_attr, <span class="st">'content'</span>) <span class="op">%&gt;%</span>
-<span class="kw">unlist</span>()
-<span class="co">#&gt; [1] &quot;2017-06-01T12:03:38Z&quot; &quot;2017-12-12T22:21:00Z&quot; &quot;2018-03-02T20:40:00Z&quot;</span>
-<span class="co">#&gt; [4] &quot;2018-01-23T14:02:32Z&quot; NA                     &quot;2014-07-01T02:49:22&quot; </span>
-<span class="co">#&gt; [7] NA</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Content-Type</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_find_first, <span class="st">&#39;//meta[@name=&quot;Content-Type&quot;]&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_attr, <span class="st">&#39;content&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;application/pdf&quot;                                                        </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;application/pdf&quot;                                                        </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;application/pdf&quot;                                                        </span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;text/html; charset=UTF-8&quot;                                               </span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;image/jpeg&quot;                                                             </span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] &quot;application/zip&quot;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Creation-Date</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>html <span class="sc">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_find_first, <span class="st">&#39;//meta[@name=&quot;Creation-Date&quot;]&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(xml2<span class="sc">::</span>xml_attr, <span class="st">&#39;content&#39;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="fu">unlist</span>()</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] NA NA NA NA NA NA NA</span></span></code></pre></div>
 </div>
 <div id="get-metadata-in-json-format" class="section level1">
 <h1>Get Metadata in JSON Format</h1>
 <p>Metadata can also accessed with <code>tika_json()</code> and <code>tika_json_text()</code>. Consider all that can be found from a single image:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">'jsonlite'</span>)
-<span class="co"># batch &lt;- system.file(&quot;extdata&quot;, &quot;calculator.jpg&quot;, package = &quot;rtika&quot;)</span>
-
-<span class="co"># a list of data.frames</span>
-metadata &lt;-
-<span class="st">    </span>batch <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">tika_json</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(jsonlite<span class="op">::</span>fromJSON)
-
-<span class="co"># look at metadata for an image</span>
-<span class="kw">str</span>(metadata[[<span class="dv">6</span>]])
-<span class="co">#&gt; 'data.frame':    1 obs. of  119 variables:</span>
-<span class="co">#&gt;  $ Application Record Version          : chr &quot;2&quot;</span>
-<span class="co">#&gt;  $ Caption Digest                      : chr &quot;158 218 29 133 38 133 242 158 59 205 21 44 236 23 180 123&quot;</span>
-<span class="co">#&gt;  $ Coded Character Set                 : chr &quot;UTF-8&quot;</span>
-<span class="co">#&gt;  $ Component 1                         : chr &quot;Y component: Quantization table 0, Sampling factors 2 horiz/2 vert&quot;</span>
-<span class="co">#&gt;  $ Component 2                         : chr &quot;Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert&quot;</span>
-<span class="co">#&gt;  $ Component 3                         : chr &quot;Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert&quot;</span>
-<span class="co">#&gt;  $ Compression Type                    : chr &quot;Baseline&quot;</span>
-<span class="co">#&gt;  $ Content-Length                      : chr &quot;83654&quot;</span>
-<span class="co">#&gt;  $ Content-Type                        : chr &quot;image/jpeg&quot;</span>
-<span class="co">#&gt;  $ Creation-Date                       : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ Data Precision                      : chr &quot;8 bits&quot;</span>
-<span class="co">#&gt;  $ Date Created                        : chr &quot;2014:07:01&quot;</span>
-<span class="co">#&gt;  $ Digital Date Created                : chr &quot;2014:07:01&quot;</span>
-<span class="co">#&gt;  $ Digital Time Created                : chr &quot;09:49:22&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Date/Time                 : chr &quot;2014:07:01 09:49:22&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Make                      : chr &quot;Apple&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Model                     : chr &quot;iPhone 5s&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Orientation               : chr &quot;Top, left side (Horizontal / normal)&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Resolution Unit           : chr &quot;Inch&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Software                  : chr &quot;7.1.1&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:X Resolution              : chr &quot;72 dots per inch&quot;</span>
-<span class="co">#&gt;  $ Exif IFD0:Y Resolution              : chr &quot;72 dots per inch&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Aperture Value          : chr &quot;f/2.2&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Brightness Value        : chr &quot;3.455&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Color Space             : chr &quot;sRGB&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Components Configuration: chr &quot;YCbCr&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Date/Time Digitized     : chr &quot;2014:07:01 09:49:22&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Date/Time Original      : chr &quot;2014:07:01 09:49:22&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exif Image Height       : chr &quot;800 pixels&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exif Image Width        : chr &quot;600 pixels&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exif Version            : chr &quot;2.21&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exposure Mode           : chr &quot;Auto exposure&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exposure Program        : chr &quot;Program normal&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Exposure Time           : chr &quot;1/30 sec&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:F-Number                : chr &quot;f/2.2&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Flash                   : chr &quot;Flash did not fire&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:FlashPix Version        : chr &quot;1.00&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Focal Length            : chr &quot;4.1 mm&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Focal Length 35         : chr &quot;30 mm&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:ISO Speed Ratings       : chr &quot;50&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Lens Make               : chr &quot;Apple&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Lens Model              : chr &quot;iPhone 5s back camera 4.12mm f/2.2&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Lens Specification      : chr &quot;4.12mm f/2.2&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Metering Mode           : chr &quot;Spot&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Scene Capture Type      : chr &quot;Standard&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Scene Type              : chr &quot;Directly photographed image&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Sensing Method          : chr &quot;One-chip color area sensor&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Shutter Speed Value     : chr &quot;1/30 sec&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Sub-Sec Time Digitized  : chr &quot;854&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Sub-Sec Time Original   : chr &quot;854&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Subject Location        : chr &quot;1956 873 610 612&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:Unique Image ID         : chr &quot;bdeb111183eae36c0000000000000000&quot;</span>
-<span class="co">#&gt;  $ Exif SubIFD:White Balance Mode      : chr &quot;Auto white balance&quot;</span>
-<span class="co">#&gt;  $ File Modified Date                  : chr &quot;Fri Apr 24 11:06:28 -07:00 2020&quot;</span>
-<span class="co">#&gt;  $ File Name                           : chr &quot;calculator.jpg&quot;</span>
-<span class="co">#&gt;  $ File Size                           : chr &quot;83654 bytes&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Altitude                    : chr &quot;95 metres&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Altitude Ref                : chr &quot;Sea level&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Date Stamp                  : chr &quot;2014:07:01&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Latitude                    : chr &quot;34° 4' 19.22\&quot;&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Latitude Ref                : chr &quot;N&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Longitude                   : chr &quot;-118° 26' 58.48\&quot;&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Longitude Ref               : chr &quot;W&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Time-Stamp                  : chr &quot;16:49:21.000 UTC&quot;</span>
-<span class="co">#&gt;  $ GPS:GPS Version ID                  : chr &quot;2.200&quot;</span>
-<span class="co">#&gt;  $ Image Height                        : chr &quot;800 pixels&quot;</span>
-<span class="co">#&gt;  $ Image Width                         : chr &quot;600 pixels&quot;</span>
-<span class="co">#&gt;  $ Last-Modified                       : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ Last-Save-Date                      : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ Number of Components                : chr &quot;3&quot;</span>
-<span class="co">#&gt;  $ Number of Tables                    : chr &quot;4 Huffman tables&quot;</span>
-<span class="co">#&gt;  $ Resolution Units                    : chr &quot;none&quot;</span>
-<span class="co">#&gt;  $ Run Time                            : chr &quot;[104 values]&quot;</span>
-<span class="co">#&gt;  $ Thumbnail Height Pixels             : chr &quot;0&quot;</span>
-<span class="co">#&gt;  $ Thumbnail Width Pixels              : chr &quot;0&quot;</span>
-<span class="co">#&gt;  $ Time Created                        : chr &quot;09:49:22&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0001)                : chr &quot;0&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0002)                : chr &quot;[558 values]&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0004)                : chr &quot;1&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0005)                : chr &quot;159&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0006)                : chr &quot;163&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0007)                : chr &quot;1&quot;</span>
-<span class="co">#&gt;  $ Unknown tag (0x0009)                : chr &quot;19&quot;</span>
-<span class="co">#&gt;  $ X Resolution                        : chr &quot;72 dots&quot;</span>
-<span class="co">#&gt;  $ X-Parsed-By                         :List of 1</span>
-<span class="co">#&gt;   ..$ : chr  &quot;org.apache.tika.parser.CompositeParser&quot; &quot;org.apache.tika.parser.DefaultParser&quot; &quot;org.apache.tika.parser.ocr.TesseractOCRParser&quot; &quot;org.apache.tika.parser.jpeg.JpegParser&quot;</span>
-<span class="co">#&gt;  $ X-TIKA:content                      : chr &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;Compression Type\&quot; content=\&quot;Baseline\&quot; /&gt;\&quot;| __truncated__</span>
-<span class="co">#&gt;  $ X-TIKA:content_handler              : chr &quot;ToXMLContentHandler&quot;</span>
-<span class="co">#&gt;  $ X-TIKA:digest:MD5                   : chr &quot;1d6e398a96f058db680b7249beb8eeda&quot;</span>
-<span class="co">#&gt;  $ X-TIKA:embedded_depth               : chr &quot;0&quot;</span>
-<span class="co">#&gt;  $ X-TIKA:parse_time_millis            : chr &quot;53&quot;</span>
-<span class="co">#&gt;  $ XMP Value Count                     : chr &quot;4&quot;</span>
-<span class="co">#&gt;  $ Y Resolution                        : chr &quot;72 dots&quot;</span>
-<span class="co">#&gt;  $ date                                : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ dcterms:created                     : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ dcterms:modified                    : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ exif:DateTimeOriginal               : chr &quot;2014-07-01T02:49:22&quot;</span>
-<span class="co">#&gt;  $ exif:ExposureTime                   : chr &quot;0.03333333333333333&quot;</span>
-<span class="co">#&gt;  $ exif:FNumber                        : chr &quot;2.2&quot;</span>
-<span class="co">#&gt;  $ exif:Flash                          : chr &quot;false&quot;</span>
-<span class="co">#&gt;   [list output truncated]</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&#39;jsonlite&#39;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># batch &lt;- system.file(&quot;extdata&quot;, &quot;calculator.jpg&quot;, package = &quot;rtika&quot;)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of data.frames</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    batch <span class="sc">%&gt;%</span> </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tika_json</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(jsonlite<span class="sc">::</span>fromJSON)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># look at metadata for an image</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(metadata[[<span class="dv">6</span>]])</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    1 obs. of  117 variables:</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Compression Type                    : chr &quot;Baseline&quot;</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:content_handler              : chr &quot;ToXMLContentHandler&quot;</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Number of Components                : chr &quot;3&quot;</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Subject Location        : chr &quot;1956 873 610 612&quot;</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Component 2                         : chr &quot;Cb component: Quantization table 1, Sampling factors 1 horiz/1 vert&quot;</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Component 1                         : chr &quot;Y component: Quantization table 0, Sampling factors 2 horiz/2 vert&quot;</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:X Resolution              : chr &quot;72 dots per inch&quot;</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:ResolutionUnit                 : chr &quot;Inch&quot;</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Scene Type              : chr &quot;Directly photographed image&quot;</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Exposure Mode           : chr &quot;Auto exposure&quot;</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:Make                           : chr &quot;Apple&quot;</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Component 3                         : chr &quot;Cr component: Quantization table 1, Sampling factors 1 horiz/1 vert&quot;</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Components Configuration: chr &quot;YCbCr&quot;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Metering Mode           : chr &quot;Spot&quot;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:White Balance Mode      : chr &quot;Auto white balance&quot;</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:BitsPerSample                  : chr &quot;8&quot;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0002)                : chr &quot;[558 values]&quot;</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Caption Digest                      : chr &quot;158 218 29 133 38 133 242 158 59 205 21 44 236 23 180 123&quot;</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Sub-Sec Time Original   : chr &quot;854&quot;</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0009)                : chr &quot;19&quot;</span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:Orientation                    : chr &quot;1&quot;</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:Software                       : chr &quot;7.1.1&quot;</span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:embedded_depth               : chr &quot;0&quot;</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ geo:long                            : chr &quot;-118.449578&quot;</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0001)                : chr &quot;0&quot;</span></span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:YResolution                    : chr &quot;72.0&quot;</span></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Y Resolution                        : chr &quot;72 dots&quot;</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Coded Character Set                 : chr &quot;UTF-8&quot;</span></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Flash                   : chr &quot;Flash did not fire&quot;</span></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Thumbnail Height Pixels             : chr &quot;0&quot;</span></span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:ExposureTime                   : chr &quot;0.03333333333333333&quot;</span></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ File Size                           : chr &quot;83654 bytes&quot;</span></span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Exif Version            : chr &quot;2.21&quot;</span></span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Focal Length            : chr &quot;4.1 mm&quot;</span></span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Resolution Unit           : chr &quot;Inch&quot;</span></span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Lens Model              : chr &quot;iPhone 5s back camera 4.12mm f/2.2&quot;</span></span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Date/Time Original      : chr &quot;2014:07:01 09:49:22&quot;</span></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Sub-Sec Time Digitized  : chr &quot;854&quot;</span></span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0007)                : chr &quot;1&quot;</span></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Resolution Units                    : chr &quot;none&quot;</span></span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ File Modified Date                  : chr &quot;Fri Aug 06 10:03:14 -07:00 2021&quot;</span></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Sensing Method          : chr &quot;One-chip color area sensor&quot;</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Epoch                               : chr &quot;0&quot;</span></span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Flags                               : chr &quot;Valid&quot;</span></span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Image Height                        : chr &quot;800 pixels&quot;</span></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Thumbnail Width Pixels              : chr &quot;0&quot;</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Longitude                   : chr &quot;-118° 26&#39; 58.48\&quot;&quot;</span></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Longitude Ref               : chr &quot;W&quot;</span></span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:Model                          : chr &quot;iPhone 5s&quot;</span></span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Brightness Value        : chr &quot;3.455&quot;</span></span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:IsoSpeedRatings                : chr &quot;50&quot;</span></span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Exposure Program        : chr &quot;Program normal&quot;</span></span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Make                      : chr &quot;Apple&quot;</span></span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Altitude Ref                : chr &quot;Sea level&quot;</span></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:parse_time_millis            : chr &quot;10&quot;</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Aperture Value          : chr &quot;f/2.2&quot;</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Date/Time Digitized     : chr &quot;2014:07:01 09:49:22&quot;</span></span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Run Time                            : chr &quot;[104 values]&quot;</span></span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:ImageWidth                     : chr &quot;600&quot;</span></span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Altitude                    : chr &quot;95 metres&quot;</span></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Y Resolution              : chr &quot;72 dots per inch&quot;</span></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0006)                : chr &quot;163&quot;</span></span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:ISO Speed Ratings       : chr &quot;50&quot;</span></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Number of Tables                    : chr &quot;4 Huffman tables&quot;</span></span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Exif Image Width        : chr &quot;600 pixels&quot;</span></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X Resolution                        : chr &quot;72 dots&quot;</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Version                             : chr &quot;1.1&quot;</span></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Application Record Version          : chr &quot;2&quot;</span></span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Time Created                        : chr &quot;09:49:22&quot;</span></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Unique Image ID         : chr &quot;bdeb111183eae36c0000000000000000&quot;</span></span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:FNumber                        : chr &quot;2.2&quot;</span></span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Shutter Speed Value     : chr &quot;1/30 sec&quot;</span></span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Digital Date Created                : chr &quot;2014:07:01&quot;</span></span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ resourceName                        : chr &quot;calculator.jpg&quot;</span></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Time-Stamp                  : chr &quot;16:49:21.000 UTC&quot;</span></span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Orientation               : chr &quot;Top, left side (Horizontal / normal)&quot;</span></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:F-Number                : chr &quot;f/2.2&quot;</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:FocalLength                    : chr &quot;4.12&quot;</span></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:Parsed-By                    :List of 1</span></span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   ..$ : chr  &quot;org.apache.tika.parser.CompositeParser&quot; &quot;org.apache.tika.parser.DefaultParser&quot; &quot;org.apache.tika.parser.image.JpegParser&quot;</span></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ XMP Value Count                     : chr &quot;4&quot;</span></span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Software                  : chr &quot;7.1.1&quot;</span></span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tika:file_ext                       : chr &quot;jpg&quot;</span></span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Value                               : chr &quot;131501 seconds&quot;</span></span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:content                      : chr &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;Compression Type\&quot; content=\&quot;Baseline\&quot; /&gt;\&quot;| __truncated__</span></span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Date/Time                 : chr &quot;2014:07:01 09:49:22&quot;</span></span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Date Created                        : chr &quot;2014:07:01&quot;</span></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0005)                : chr &quot;159&quot;</span></span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Version ID                  : chr &quot;2.200&quot;</span></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Scene Capture Type      : chr &quot;Standard&quot;</span></span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ geo:lat                             : chr &quot;34.072006&quot;</span></span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Data Precision                      : chr &quot;8 bits&quot;</span></span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tika_batch_fs:relative_path         : chr &quot;private/var/folders/qm/mdgjtmkj0g56rh6wqygglzfh0000gn/T/Rtmpiv4Tq3/Rinst99f965e88e76/rtika/extdata/calculator.jpg&quot;</span></span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:ImageLength                    : chr &quot;800&quot;</span></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Lens Specification      : chr &quot;4.12mm f/2.2&quot;</span></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Model                     : chr &quot;iPhone 5s&quot;</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:created                     : chr &quot;2014-07-01T02:49:22&quot;</span></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:modified                    : chr &quot;2014-07-01T02:49:22&quot;</span></span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:Flash                          : chr &quot;false&quot;</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Digital Time Created                : chr &quot;09:49:22&quot;</span></span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
 <p>In addition, each specific format can have its own specialized metadata fields. For example, photos sometimes store latitude and longitude:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">metadata[[<span class="dv">6</span>]]<span class="op">$</span><span class="st">'geo:lat'</span>
-<span class="co">#&gt; [1] &quot;34.072006&quot;</span>
-metadata[[<span class="dv">6</span>]]<span class="op">$</span><span class="st">'geo:long'</span>
-<span class="co">#&gt; [1] &quot;-118.449578&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>metadata[[<span class="dv">6</span>]]<span class="sc">$</span><span class="st">&#39;geo:lat&#39;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;34.072006&quot;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>metadata[[<span class="dv">6</span>]]<span class="sc">$</span><span class="st">&#39;geo:long&#39;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;-118.449578&quot;</span></span></code></pre></div>
 </div>
 <div id="get-metadata-from-container-documents" class="section level1">
 <h1>Get Metadata from “Container” Documents</h1>
 <p>Some types of documents can have multiple objects within them. For example, a <code>.gzip</code> file may contain many other files. The <code>tika_json()</code> and <code>tika_json_text()</code> functions have a special ability that others do not. They will recurse into a container and examine each file within. The Tika authors call the format <code>jsonRecursive</code> for this reason.</p>
 <p>In the following example, I created a compressed archive of the Apache Tika homepage, using the command line programs <code>wget</code> and <code>zip</code>. The small archive includes the HTML page, its images, and required files.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># wget gets a webpage and other files. </span>
-<span class="co"># sys::exec_wait('wget', c('--page-requisites', 'https://tika.apache.org/'))</span>
-<span class="co"># Put it all into a .zip file </span>
-<span class="co"># sys::exec_wait('zip', c('-r', 'tika.apache.org.zip' ,'tika.apache.org'))</span>
-batch &lt;-<span class="st"> </span><span class="kw">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;tika.apache.org.zip&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;rtika&quot;</span>)
-
-<span class="co"># a list of data.frames</span>
-metadata &lt;-
-<span class="st">    </span>batch <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">    </span><span class="kw">tika_json</span>() <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(jsonlite<span class="op">::</span>fromJSON)
-
-<span class="co"># The structure is very long. See it on your own with: str(metadata)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># wget gets a webpage and other files. </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># sys::exec_wait(&#39;wget&#39;, c(&#39;--page-requisites&#39;, &#39;https://tika.apache.org/&#39;))</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Put it all into a .zip file </span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># sys::exec_wait(&#39;zip&#39;, c(&#39;-r&#39;, &#39;tika.apache.org.zip&#39; ,&#39;tika.apache.org&#39;))</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>batch <span class="ot">&lt;-</span> <span class="fu">system.file</span>(<span class="st">&quot;extdata&quot;</span>, <span class="st">&quot;tika.apache.org.zip&quot;</span>, <span class="at">package =</span> <span class="st">&quot;rtika&quot;</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># a list of data.frames</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>metadata <span class="ot">&lt;-</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    batch <span class="sc">%&gt;%</span> </span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tika_json</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(jsonlite<span class="sc">::</span>fromJSON)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># The structure is very long. See it on your own with: str(metadata)</span></span></code></pre></div>
 <p>Here are some of the main metadata fields of the recursive <code>json</code> output:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># the 'X-TIKA:embedded_resource_path' field</span>
-embedded_resource_path &lt;-<span class="st"> </span>
-<span class="st">    </span>metadata <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(<span class="cf">function</span>(x){ x<span class="op">$</span><span class="st">'X-TIKA:embedded_resource_path'</span> }) 
-
-embedded_resource_path
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt;  [1] NA                       &quot;/index.html&quot;            &quot;/site.css&quot;             </span>
-<span class="co">#&gt;  [4] &quot;/external.png&quot;          &quot;/icon_info_sml.gif&quot;     &quot;/icon_warning_sml.gif&quot; </span>
-<span class="co">#&gt;  [7] &quot;/icon_error_sml.gif&quot;    &quot;/icon_success_sml.gif&quot;  &quot;/tika.png&quot;             </span>
-<span class="co">#&gt; [10] &quot;/mattmann_cover150.jpg&quot; &quot;/asf-logo.gif&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the &#39;X-TIKA:embedded_resource_path&#39; field</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>embedded_resource_path <span class="ot">&lt;-</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    metadata <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="cf">function</span>(x){ x<span class="sc">$</span><span class="st">&#39;X-TIKA:embedded_resource_path&#39;</span> }) </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>embedded_resource_path</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] NA                       &quot;/index.html&quot;            &quot;/site.css&quot;             </span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;/external.png&quot;          &quot;/icon_info_sml.gif&quot;     &quot;/icon_warning_sml.gif&quot; </span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;/icon_error_sml.gif&quot;    &quot;/icon_success_sml.gif&quot;  &quot;/tika.png&quot;             </span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;/mattmann_cover150.jpg&quot; &quot;/asf-logo.gif&quot;</span></span></code></pre></div>
 <p>The <code>X-TIKA:embedded_resource_path</code> field tells you where in the document hierarchy each object resides. The first item in the character vector is the root, which is the container itself. The other items are embedded one layer down, as indicated by the forward slash <code>/</code>. In the context of the <code>X-TIKA:embedded_resource_path</code> field, paths are not literally directory paths like in a file system. In reality, the image <code>icon_info_sml.gif</code> is within a folder called <code>images</code>. Rather, the number of forward slashes indicates the level of recursion within the document. One slash <code>/</code> reveals a first set of embedded documents. Additional slashes <code>/</code> indicate that the parser has recursed into an embedded document within an embedded document.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">content_type &lt;-
-<span class="st">    </span>metadata <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(<span class="cf">function</span>(x){ x<span class="op">$</span><span class="st">'Content-Type'</span> }) 
-
-content_type
-<span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt;  [1] &quot;application/zip&quot;                     </span>
-<span class="co">#&gt;  [2] &quot;application/xhtml+xml; charset=UTF-8&quot;</span>
-<span class="co">#&gt;  [3] &quot;text/css; charset=ISO-8859-1&quot;        </span>
-<span class="co">#&gt;  [4] &quot;image/png&quot;                           </span>
-<span class="co">#&gt;  [5] &quot;image/gif&quot;                           </span>
-<span class="co">#&gt;  [6] &quot;image/gif&quot;                           </span>
-<span class="co">#&gt;  [7] &quot;image/gif&quot;                           </span>
-<span class="co">#&gt;  [8] &quot;image/gif&quot;                           </span>
-<span class="co">#&gt;  [9] &quot;image/png&quot;                           </span>
-<span class="co">#&gt; [10] &quot;image/jpeg&quot;                          </span>
-<span class="co">#&gt; [11] &quot;image/gif&quot;</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>content_type <span class="ot">&lt;-</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    metadata <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="cf">function</span>(x){ x<span class="sc">$</span><span class="st">&#39;Content-Type&#39;</span> }) </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>content_type</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [[1]]</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;application/zip&quot;                     </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;application/xhtml+xml; charset=UTF-8&quot;</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;text/css; charset=ISO-8859-1&quot;        </span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;image/png&quot;                           </span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;image/gif&quot;                           </span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;image/gif&quot;                           </span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;image/gif&quot;                           </span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;image/gif&quot;                           </span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;image/png&quot;                           </span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;image/jpeg&quot;                          </span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [11] &quot;image/gif&quot;</span></span></code></pre></div>
 <p>The <code>Content-Type</code> metadata reveals the first item is the container and has the type <code>application/zip</code>. The items after that are deeper and include web formats such as <code>application/xhtml+xml</code>, <code>image/png</code>, and <code>text/css</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">content &lt;-<span class="st"> </span>
-<span class="st">     </span>metadata <span class="op">%&gt;%</span>
-<span class="st">    </span><span class="kw">lapply</span>(<span class="cf">function</span>(x){ x<span class="op">$</span><span class="st">'X-TIKA:content'</span> })
-
-<span class="kw">str</span>(content)
-<span class="co">#&gt; List of 1</span>
-<span class="co">#&gt;  $ : chr [1:11] &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;X-Parsed-By\&quot; content=\&quot;org.apache.tika.par&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;link rel=\&quot;icon\&quot; type=\&quot;image/png\&quot; href=\&quot;./tikaNoTex&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;date\&quot; content=\&quot;2014-12-20T07:36:10Z\&quot; /&gt;\&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;date\&quot; content=\&quot;2010-08-05T13:48:24Z\&quot; /&gt;\&quot;| __truncated__ ...</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>content <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>     metadata <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lapply</span>(<span class="cf">function</span>(x){ x<span class="sc">$</span><span class="st">&#39;X-TIKA:content&#39;</span> })</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(content)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; List of 1</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ : chr [1:11] &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;X-TIKA:Parsed-By\&quot; content=\&quot;org.apache.tik&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;link rel=\&quot;icon\&quot; type=\&quot;image/png\&quot; href=\&quot;./tikaNoTex&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;embeddedRelationshipId\&quot; content=\&quot;tika.apa&quot;| __truncated__ &quot;&lt;html xmlns=\&quot;http://www.w3.org/1999/xhtml\&quot;&gt;\n&lt;head&gt;\n&lt;meta name=\&quot;Transparency Alpha\&quot; content=\&quot;nonpremultip&quot;| __truncated__ ...</span></span></code></pre></div>
 <p>The <code>X-TIKA:content</code> field includes the XHTML rendition of an object. It is possible to extract plain text in the <code>X-TIKA:content</code> field by calling <code>tika_json_text()</code> instead. That is the only difference between <code>tika_json()</code> and <code>tika_json_text()</code>.</p>
 <p>It may be surprising to learn that Word documents are containers (at least the modern <code>.docx</code> variety are). By parsing them with <code>tika_json()</code> or <code>tika_json_text()</code>, the various images and embedded objects can be analyzed. However, there is an added complexity, because each document may produce a long vector of <code>Content-Types</code> for each embedded file, instead of a single <code>Content-Type</code> for the container like <code>tika_xml()</code> and <code>tika_html()</code>.</p>
 </div>
@@ -478,16 +544,16 @@ content_type
 </ul>
 </div>
 <div id="references" class="section level1 unnumbered">
-<h1>References</h1>
-<div id="refs" class="references">
-<div id="ref-mattmann2013computing">
-<p>Mattmann, Chris A. 2013. “Computing: A Vision for Data Science.” <em>Nature</em> 493 (7433). Nature Publishing Group: 473.</p>
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-mattmann2013computing" class="csl-entry">
+Mattmann, Chris A. 2013. <span>“Computing: A Vision for Data Science.”</span> <em>Nature</em> 493 (7433): 473.
 </div>
-<div id="ref-mattmann2011tika">
-<p>Mattmann, Chris, and Jukka Zitting. 2011. <em>Tika in Action</em>. Manning Publications Co. <a href="https://www.manning.com/books/tika-in-action" class="uri">https://www.manning.com/books/tika-in-action</a>.</p>
+<div id="ref-mattmann2011tika" class="csl-entry">
+Mattmann, Chris, and Jukka Zitting. 2011. <em>Tika in Action</em>. Manning Publications Co. <a href="https://www.manning.com/books/tika-in-action">https://www.manning.com/books/tika-in-action</a>.
 </div>
-<div id="ref-silge2017text">
-<p>Silge, Julia, and David Robinson. 2017. <em>Text Mining with R: A Tidy Approach</em>. O’Reilly Media, Inc. <a href="https://www.tidytextmining.com/" class="uri">https://www.tidytextmining.com/</a>.</p>
+<div id="ref-silge2017text" class="csl-entry">
+Silge, Julia, and David Robinson. 2017. <em>Text Mining with r: A Tidy Approach</em>. O’Reilly Media, Inc. <a href="https://www.tidytextmining.com/">https://www.tidytextmining.com/</a>.
 </div>
 </div>
 </div>
