@@ -136,7 +136,7 @@
 #' @section Installation:
 #'  Tika requires Java 8.
 #'
-#'  Java installation instructions are at http://openjdk.java.net/install/
+#'  Java installation instructions are at https://openjdk.org/install/
 #' or https://www.java.com/en/download/help/download_options.xml.
 #'
 #' By default, this R package internally invokes Java by calling the \code{java}
@@ -172,7 +172,7 @@ tika <- function(input,
     # (4) NEWS.md to the verision
 
   # When updating the package, run these functions in order:
-    # make sure required packages are installed including: devtools, rappdirs, knitr,rmarkdown, pkgdown
+    # make sure required packages are installed including: devtools, knitr,rmarkdown, pkgdown
     # devtools::document() # sets up NAMESPACE and .Rd documentation files to match function
     # Use Rstudio's "Build" > "Install and Restart" 
     # if necessary, run "rtika::install_tika()" to update the .jar
