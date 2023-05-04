@@ -12,7 +12,7 @@
 
 <meta name="author" content="Sasha Goodman" />
 
-<meta name="date" content="2022-09-25" />
+<meta name="date" content="2023-05-04" />
 
 <title>Introduction to rtika</title>
 
@@ -362,7 +362,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Introduction to rtika</h1>
 <h4 class="author">Sasha Goodman</h4>
-<h4 class="date">2022-09-25</h4>
+<h4 class="date">2023-05-04</h4>
 
 
 
@@ -499,8 +499,8 @@ server by finding the matching extension in Tika’s database.</p>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># it will add the appropriate file extension to the downloads</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>downloaded</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_58045486c21/rtika_file580455b2ed3c.html&quot;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_58045486c21/rtika_file580455f52a18.pdf&quot;</span></span></code></pre></div>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_2622743d3a8/rtika_file262275fcbe51.html&quot;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_2622743d3a8/rtika_file26222432f45b.pdf&quot;</span></span></code></pre></div>
 <p>This <code>tika_fetch()</code> function is used internally by the
 <code>tika()</code> functions when processing URLs. By using
 <code>tika_fetch()</code> explicitly with a specified directory, you can
@@ -545,13 +545,13 @@ convention from the Apache Tika batch processor: the full path to each
 file mirrors the original file’s path, only within the
 <code>output_dir</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>processed_files</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/R-FAQ.html.txt&quot;         </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/calculator.jpg.txt&quot;     </span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/curl.pdf.txt&quot;           </span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/jsonlite.pdf.txt&quot;       </span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/table.docx.txt&quot;         </span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/tika.apache.org.zip.txt&quot;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpeTlb2P/rtika_580432b49352/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/xml2.pdf.txt&quot;</span></span></code></pre></div>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/R-FAQ.html.txt&quot;         </span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/calculator.jpg.txt&quot;     </span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/curl.pdf.txt&quot;           </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/jsonlite.pdf.txt&quot;       </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/table.docx.txt&quot;         </span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/tika.apache.org.zip.txt&quot;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [7] &quot;/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/Rtmpt8ekM8/rtika_262218299c12/private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/xml2.pdf.txt&quot;</span></span></code></pre></div>
 <p>Note that <code>tika_text()</code> produces <code>.txt</code> files,
 <code>tika_xml()</code> produces <code>.xml</code> files,
 <code>tika_html()</code> produces <code>.html</code> files, and both
@@ -584,14 +584,14 @@ metadata:</p>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(links[[<span class="dv">1</span>]],<span class="dv">10</span>)</span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [2] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;http://docs.mongodb.org/manual/reference/program/mongoexport/#cmdoption--query&quot;</span></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;http://en.wikipedia.org/wiki/Singleton_(mathematics)&quot;                          </span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [3] &quot;http://jsonlines.org/&quot;                                                         </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [4] &quot;http://github.com/jeroen/jsonlite/issues&quot;                                      </span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] &quot;http://ndjson.org&quot;                                                             </span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [6] &quot;https://arxiv.org/abs/1403.2805&quot;                                               </span></span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [7] &quot;http://docs.mongodb.org/manual/reference/program/mongoexport/#cmdoption--query&quot;</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;http://ndjson.org&quot;                                                             </span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;https://github.com/maxogden/dat&quot;                                               </span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;http://github.com/jeroen/jsonlite/issues&quot;</span></span></code></pre></div>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [8] &quot;http://en.wikipedia.org/wiki/Singleton_(mathematics)&quot;                          </span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] &quot;https://www.opencpu.org/posts/jsonlite-a-smarter-json-encoder&quot;                 </span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [10] &quot;http://ndjson.org&quot;</span></span></code></pre></div>
 <p>Each type of file has different information preserved by Tika’s
 internal parsers. The particular aspects vary. Some notes:</p>
 <ul>
@@ -698,7 +698,7 @@ single image:</p>
 <span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Sub-Sec Time Digitized  : chr &quot;854&quot;</span></span>
 <span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Unknown tag (0x0007)                : chr &quot;1&quot;</span></span>
 <span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Resolution Units                    : chr &quot;none&quot;</span></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ File Modified Date                  : chr &quot;Sun Sep 25 17:06:03 -07:00 2022&quot;</span></span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ File Modified Date                  : chr &quot;Thu May 04 15:09:51 -07:00 2023&quot;</span></span>
 <span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Sensing Method          : chr &quot;One-chip color area sensor&quot;</span></span>
 <span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Epoch                               : chr &quot;0&quot;</span></span>
 <span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Flags                               : chr &quot;Valid&quot;</span></span>
@@ -712,7 +712,7 @@ single image:</p>
 <span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Exposure Program        : chr &quot;Program normal&quot;</span></span>
 <span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Make                      : chr &quot;Apple&quot;</span></span>
 <span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ GPS:GPS Altitude Ref                : chr &quot;Sea level&quot;</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:parse_time_millis            : chr &quot;129&quot;</span></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ X-TIKA:parse_time_millis            : chr &quot;119&quot;</span></span>
 <span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Aperture Value          : chr &quot;f/2.2&quot;</span></span>
 <span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Date/Time Digitized     : chr &quot;2014:07:01 09:49:22&quot;</span></span>
 <span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Run Time                            : chr &quot;[104 values]&quot;</span></span>
@@ -750,12 +750,12 @@ single image:</p>
 <span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Scene Capture Type      : chr &quot;Standard&quot;</span></span>
 <span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ geo:lat                             : chr &quot;34.072006&quot;</span></span>
 <span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Data Precision                      : chr &quot;8 bits&quot;</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tika_batch_fs:relative_path         : chr &quot;private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpoQtuOu/Rinst57d5693b8bb3/rtika/extdata/calculator.jpg&quot;</span></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tika_batch_fs:relative_path         : chr &quot;private/var/folders/r9/svkzrjgd2b550nl7cs6rdxph0000gn/T/RtmpSYQOHQ/Rinst25f47fc37a2c/rtika/extdata/calculator.jpg&quot;</span></span>
 <span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ tiff:ImageLength                    : chr &quot;800&quot;</span></span>
 <span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif SubIFD:Lens Specification      : chr &quot;4.12mm f/2.2&quot;</span></span>
 <span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ Exif IFD0:Model                     : chr &quot;iPhone 5s&quot;</span></span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:created                     : chr &quot;2014-07-01T02:49:22&quot;</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:modified                    : chr &quot;2014-07-01T02:49:22&quot;</span></span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:created                     : chr &quot;2014-07-01T09:49:22&quot;</span></span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ dcterms:modified                    : chr &quot;2014-07-01T09:49:22&quot;</span></span>
 <span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ exif:Flash                          : chr &quot;false&quot;</span></span>
 <span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   [list output truncated]</span></span></code></pre></div>
 <p>In addition, each specific format can have its own specialized
